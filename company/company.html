@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- start css link -->
+    <link rel="stylesheet" href="css/company.css">
+    <link rel="stylesheet" href="../common/css/bootstrap.min.css">
+    <!-- end css link -->
+
+    <!-- start js link -->
+    <script src="../common/js/bootstrap.bundle.min.js"></script>
+    <!-- end js link -->
+    <title>Company</title>
+</head>
+
+<body>
+    <div class="container bg-white main-box">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand">Brand Logo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>.
+                </button>
+                <div class="collpase navbar-collapse" id="myNavbar">
+                    <div class="navbar-nav w-100 justify-content-end">
+                        <a href="#" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Portfolio</a>
+                        <a href="#" class="nav-link">About Us</a>
+                        <a href="#" class="nav-link">Contact Us</a>
+                        <a href="#" class="nav-link btn signup-btn bg-info">Sign Up</a>
+                        <a href="#" class="nav-link d-none btn login-btn bg-info">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="login-box active">
+                    <form class="login-form">
+                        <label for="brand-code">Brand Code</label>
+                        <input type="text" id="brand-code" name="brand-code" class="form-control mb-3"
+                            placeholder="Enter Brand Code">
+
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-control mb-3"
+                            placeholder="Enter Username">
+
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control mb-3"
+                            placeholder="Enter Password">
+
+                        <div align="end">
+                            <a href="#">Student Login Form</a>
+                        </div>
+                        <button type="button" class="btn btn-danger mt-3 mb-3 w-100">Sign In</button>
+                    </form>
+                </div>
+
+                <div class="signup-box">
+                    <form class="signup-form">
+                        <label for="s-brand-code">Brand Code</label>
+                        <input type="text" name="s-brand-code" id="s-brand-code" class="form-control mb-3"
+                            placeholder="Enter Brand Code">
+
+                        <label for="brand-name">Brand Name</label>
+                        <input type="text" required id="brand-name" name="brand-name" class="form-control mb-3"
+                            placeholder="Enter Brand Name">
+
+                        <label for="website">Website</label>
+                        <input type="text" id="website" name="website" class="form-control mb-3"
+                            placeholder="Enter Website">
+
+                        <label for="contact">Contact</label>
+                        <input type="text" required id="contact" name="contact" class="form-control mb-3"
+                            placeholder="Enter Contact">
+                            
+                        <label for="address">Address</label>
+                        <textarea name="address" id="address" class="form-control mb-3" placeholder="Enter Address"></textarea>
+
+                        <label for="s-username">Username</label>
+                        <input type="text" required id="s-username" name="s-username" class="form-control mb-3"
+                            placeholder="Enter Username">
+
+                        <label for="s-password">Password</label>
+                        <input type="text" required id="s-password" name="s-password" class="form-control mb-3"
+                            placeholder="Enter Password">
+                        <div align="end">
+                            <a href="#">Student Login Form</a>
+                        </div>
+                        <button type="button" class="btn btn-danger mt-3 mb-3 w-100">Sign In</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- <img src="" class="w-100" alt=""> -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/company.js"></script>
+</body>
+
+</html>

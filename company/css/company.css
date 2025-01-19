@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    background-color: #8ca2f8 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-box {
+    width: 80%;
+    height: auto;
+    border-radius: 25px;
+    padding: 30px;
+}
+
+.main-box .navbar .navbar-brand {
+    font-size: 25px;
+    font-family: sans-serif !important;
+    font-weight: bold;
+}
+
+.main-box .navbar .nav-link {
+    font-family: sans-serif !important;
+    font-weight: bold;
+}
+
+.main-box .navbar .btn {
+    background-color: #FC91BC !important;
+    color: #fff !important;
+}
+
+/* start login and signup coding */
+
+.main-box .login-box, .main-box .signup-box {
+    width: 80%;
+    padding: 0px 20px;
+}
+
+.main-box .login-box h1 {
+    font-size: 35px;
+    font-family: sans-serif !important;
+}
+
+.main-box .login-box label, .main-box .signup-box label {
+    font-family: sans-serif !important;
+}
+
+.main-box .login-box input, .main-box .signup-box input,
+.main-box .signup-box textarea {
+    border: none !important;
+    border-bottom: 2px solid #FC91BC !important;
+    box-shadow: none !important;
+}
+
+.main-box .login-box button, .main-box .signup-box button{
+    background-color: #FC91BC !important;
+    font-family: sans-serif !important;
+    font-size: 22px !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.main-box .login-box{
+    height: 0;
+    opacity: 0;
+    transition: 1s ease-in;
+    overflow: hidden;
+}
+
+.main-box .login-box.active{
+    height: auto;
+    opacity: 1;
+}
+
+.main-box .signup-box{
+    opacity: 0;
+    height: 0;
+    transition: 1s ease-in;
+    overflow: hidden;
+}
+
+.main-box .signup-box.active{
+    opacity: 1;
+    height: auto;
+}
