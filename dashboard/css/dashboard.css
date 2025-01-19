@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.side-nav{
+    width: 250px;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 20px 0px;
+    flex-direction: column;
+}
+
+.side-nav .profile-pic{
+    width: 150px;
+    height: 150px;
+    background-image: url('/images/profile-dp.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    
+}
+
+.side-nav ul{
+    width: 100%;
+}

@@ -7,10 +7,12 @@
     <!-- start css link -->
     <link rel="stylesheet" href="css/company.css">
     <link rel="stylesheet" href="../common/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/css/animate.min.css">    
     <!-- end css link -->
 
     <!-- start js link -->
     <script src="../common/js/bootstrap.bundle.min.js"></script>
+    <script src="../common/js/sweetalert.min.js"></script>    
     <!-- end js link -->
     <title>Company</title>
 </head>
@@ -28,7 +30,7 @@
                         <a href="#" class="nav-link">Home</a>
                         <a href="#" class="nav-link">Portfolio</a>
                         <a href="#" class="nav-link">About Us</a>
-                        <a href="#" class="nav-link">Contact Us</a>
+                        <a href="#" class="nav-link">Contact</a>
                         <a href="#" class="nav-link btn signup-btn bg-info">Sign Up</a>
                         <a href="#" class="nav-link d-none btn login-btn bg-info">Sign In</a>
                     </div>
@@ -40,28 +42,28 @@
                 <div class="login-box active">
                     <form class="login-form">
                         <label for="brand-code">Brand Code</label>
-                        <input type="text" id="brand-code" name="brand-code" class="form-control mb-3"
+                        <input type="text" required id="brand-code" name="brand-code" class="form-control mb-3"
                             placeholder="Enter Brand Code">
 
                         <label for="username">Username</label>
-                        <input type="text" id="username" name="username" class="form-control mb-3"
+                        <input type="text" required id="username" name="username" class="form-control mb-3"
                             placeholder="Enter Username">
 
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" class="form-control mb-3"
+                        <input type="password" required id="password" name="password" class="form-control mb-3"
                             placeholder="Enter Password">
 
                         <div align="end">
                             <a href="#">Student Login Form</a>
                         </div>
-                        <button type="button" class="btn btn-danger mt-3 mb-3 w-100">Sign In</button>
+                        <button class="btn signin-btn btn-danger mt-3 mb-3 w-100">Sign In</button>
                     </form>
                 </div>
 
                 <div class="signup-box">
                     <form class="signup-form">
                         <label for="s-brand-code">Brand Code</label>
-                        <input type="text" name="s-brand-code" id="s-brand-code" class="form-control mb-3"
+                        <input type="text" required name="s-brand-code" id="s-brand-code" class="form-control mb-3"
                             placeholder="Enter Brand Code">
 
                         <label for="brand-name">Brand Name</label>
@@ -75,21 +77,22 @@
                         <label for="contact">Contact</label>
                         <input type="text" required id="contact" name="contact" class="form-control mb-3"
                             placeholder="Enter Contact">
-                            
+
                         <label for="address">Address</label>
-                        <textarea name="address" id="address" class="form-control mb-3" placeholder="Enter Address"></textarea>
+                        <textarea name="address" required id="address" class="form-control mb-3"
+                            placeholder="Enter Address"></textarea>
 
                         <label for="s-username">Username</label>
                         <input type="text" required id="s-username" name="s-username" class="form-control mb-3"
                             placeholder="Enter Username">
 
                         <label for="s-password">Password</label>
-                        <input type="text" required id="s-password" name="s-password" class="form-control mb-3"
+                        <input type="password" required id="s-password" name="s-password" class="form-control mb-3"
                             placeholder="Enter Password">
                         <div align="end">
                             <a href="#">Student Login Form</a>
                         </div>
-                        <button type="button" class="btn btn-danger mt-3 mb-3 w-100">Sign In</button>
+                        <button class="btn btn-danger mt-3 mb-3 w-100">Sign Up</button>
                     </form>
                 </div>
             </div>
