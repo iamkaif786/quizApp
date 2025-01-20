@@ -2,10 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Verdana;
 }
 
 .side-nav{
-    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
     height: 100vh;
     background-color: black;
     display: flex;
@@ -27,4 +31,44 @@
 
 .side-nav ul{
     width: 100%;
+    margin: 20px 0px 0px;
 }
+
+.side-nav ul li {
+    border-radius: 0 !important;
+    margin: 10px 0px;
+    background-color: transparent !important;
+    font-size: 20px;
+    color: white;
+    transition: 0.4s ease-in-out;
+}
+
+.side-nav ul li:hover{
+    background-color: #fff !important;
+    color: #000 !important;
+    cursor: pointer;
+}
+
+.side-nav button{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 13px;
+    border: none;
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    font-size: 22px;
+    border-right: 2px solid #000;
+}
+
+/* end sidenav coding */
+
+/* start main-box coding */
+
+.main-box .list-group li{
+    border-radius: 0 !important;
+    background-color: aqua !important;
+}
+
+/* end main-box coding */

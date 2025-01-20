@@ -68,6 +68,7 @@ signinBtn.onclick = function (e) {
                     signinBtn.disabled = true;
                     setTimeout(function(){
                         window.location = '../dashboard/dashboard.html';
+                        sessionStorage.setItem("brandCode", brandCode.value);
                     }, 3000)
                 }else{
                     swal("Wrong Password !", "Please check your Password !", "warning");
