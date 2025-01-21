@@ -168,7 +168,7 @@ var firstOption = chooseSubject.querySelectorAll("OPTION")[1];
 
 function checkSubject() {
     if (chooseSubject.value == "choose subject") {
-        subject = firstOption.value;        
+        subject = firstOption.value;
     } else {
         subject = chooseSubject.value;
     }
@@ -176,30 +176,184 @@ function checkSubject() {
 checkSubject();
 
 function checkSubjectKey() {
-    if (localStorage.getItem(brandCode + '_' + subject + '_question')!= null) {
+    if (localStorage.getItem(brandCode + '_' + subject + '_question') != null) {
         allQuestion = JSON.parse(localStorage.getItem(brandCode + '_' + subject + '_question'));
-    }else{
+    } else {
         allQuestion = [];
     }
 }
 
 checkSubjectKey();
 
-function insertQuestionFunc() {
-    if (chooseSubject.value != "choose subject") {
-        allQuestion.push({
-            question: allQuesInput[0].value,
-            optionOne: allQuesInput[1].value,
-            optionTwo: allQuesInput[2].value,
-            optionThree: allQuesInput[3].value,
-            optionFour: allQuesInput[4].value,
-            correctAnswer: allQuesInput[5].value
-        });
-
-        localStorage.setItem(brandCode + '_' + chooseSubject.value + "_question", JSON.stringify(allQuestion));
-        swal("Success !", "Data Inserted Successfully !", "success");
-        questionForm.reset('');
+function insertQuestionFunc(sub, id, question, opOne, opTwo, opThree, opFour, corAns) {
+    if (sub != undefined && id != undefined) {
+        allQuestion[id] = {
+            question: question,
+            optionOne: opOne,
+            optionTwo: opTwo,
+            optionThree: opThree,
+            optionFour: opFour,
+            correctAnswer: corAns
+        }
+        localStorage.setItem(brandCode + '_' + sub + '_question', JSON.stringify(allQuestion));
+        swal("Success !", "Data Updated Successfully !", "success");
     } else {
-        swal("Choose Subject !", "Please Select Subject !", "warning");
+        if (chooseSubject.value != "choose subject") {
+            allQuestion.push({
+                question: allQuesInput[0].value,
+                optionOne: allQuesInput[1].value,
+                optionTwo: allQuesInput[2].value,
+                optionThree: allQuesInput[3].value,
+                optionFour: allQuesInput[4].value,
+                correctAnswer: allQuesInput[5].value
+            });
+
+            localStorage.setItem(brandCode + '_' + chooseSubject.value + "_question", JSON.stringify(allQuestion));
+            swal("Success !", "Data Inserted Successfully !", "success");
+            questionForm.reset('');
+        } else {
+            swal("Choose Subject !", "Please Select a Subject !", "warning");
+        }
     }
+
+}
+
+// start returning questions from localstorage
+var newQuestions = [];
+var visibleQuestion = document.querySelector('.visible-question');
+selectSubject.onchange = () => {
+    if (localStorage.getItem(brandCode + '_' + selectSubject.value + '_question') != null) {
+        newQuestions = JSON.parse(localStorage.getItem(brandCode + '_' + selectSubject.value + '_question'));
+        visibleQuestion.innerHTML = '';
+        newQuestionFunc();
+    } else {
+        visibleQuestion.innerHTML = "<b style='color:red'>No Data Available !</b>";
+    }
+}
+
+const newQuestionFunc = () => {
+    newQuestions.forEach((question, index) => {
+        visibleQuestion.innerHTML += `        
+        <div class="mb-5" index="${index}">
+            <br>
+            <div class="d-flex justify-content-between">
+                <h3>${index + 1}) ${question.question}</h3>
+                <div>
+                    <i class="fa fa-edit edit-btn mx-3"></i>
+                    <i class="fa fa-save save-btn d-none mx-3"></i>
+                    <i class="fa fa-trash del-btn mx-3"></i>
+                </div>
+            </div>
+            <br>
+            <div>
+                <span>1) ${question.optionOne}</span>
+                <br><br>
+                <span>2) ${question.optionTwo}</span>
+                <br><br>
+                <span>3) ${question.optionThree}</span>
+                <br><br>
+                <span>4) ${question.optionFour}</span>
+                <br><br>
+                <span class="bg-info text-white p-3"> ${question.correctAnswer}</span>
+                <br><br>
+            </div>
+        </div>
+        
+        `;
+    });
+
+    // start delete coding
+    var allDelBtn = visibleQuestion.querySelectorAll(".del-btn");
+    var i, j;
+    for (i = 0; i < allDelBtn.length; i++) {
+        allDelBtn[i].onclick = (e) => {
+            var parent = e.target.parentElement.parentElement.parentElement;
+            var index = parent.getAttribute("index");
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        newQuestions.splice(index, 1);
+                        localStorage.setItem(brandCode + '_' + selectSubject.value + '_question', JSON.stringify(newQuestions));
+                        parent.remove();
+                        swal("Poof! Your imaginary file has been deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+        }
+    }
+
+    // start edit coding
+    var allEditBtn = visibleQuestion.querySelectorAll('.edit-btn');
+    for (i = 0; i < allDelBtn.length; i++) {
+        allEditBtn[i].onclick = function () {
+            var parent = this.parentElement.parentElement.parentElement;
+            var index = +parent.getAttribute('index');
+            var saveBtn = parent.querySelector('.save-btn');
+            this.classList.add('d-none');
+            saveBtn.classList.remove('d-none');
+            var h3 = parent.querySelector('h3');
+            var span = parent.querySelectorAll('span');
+            h3.contentEditable = true;
+            h3.focus();
+
+            for (j = 0; j < span.length; j++) {
+                span[j].contentEditable = true;
+                span[j].style.border = '2px solid red';
+            }
+            saveBtn.onclick = function () {
+                var subject = selectSubject.value;
+                var question = h3.innerHTML.replace(`${index + 1}) `, "");
+                var opOne = span[0].innerHTML.replace('1) ', '');
+                var opTwo = span[1].innerHTML.replace('2) ', '');
+                var opThree = span[2].innerHTML.replace('3) ', '');
+                var opFour = span[3].innerHTML.replace('4) ', '');
+                var corAns = span[4].innerHTML;
+                swal({
+                    title: "Are you sure?",
+                    text: "Once updated, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willUpdated) => {
+                        if (willUpdated) {
+                            insertQuestionFunc(subject, index, question, opOne, opTwo, opThree, opFour, corAns);
+                            allEditBtn[index].classList.remove('d-none');
+                            saveBtn.classList.add('d-none');
+                            h3.contentEditable = false;
+                            for (j = 0; j < span.length; j++) {
+                                span[j].contentEditable = false;
+                                span[j].style.border = 'none';
+                            }
+                        } else {
+                            swal("Your imaginary file is safe!");
+                        }
+                    });
+            }
+        }
+    }
+}
+
+// start toggler coding
+var togglersBtn = document.querySelectorAll('.toggler-icon');
+var sideNav = document.querySelector('.side-nav');
+togglersBtn[0].onclick = function () {
+    sideNav.classList.add('active');
+    this.classList.add('d-none');
+    togglersBtn[1].classList.remove('d-none');
+}
+
+togglersBtn[1].onclick = function () {
+    sideNav.classList.remove('active');
+    this.classList.add('d-none');
+    togglersBtn[0].classList.remove('d-none');
 }

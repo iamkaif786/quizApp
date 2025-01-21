@@ -17,6 +17,8 @@
     align-items: center;
     padding: 20px 0px;
     flex-direction: column;
+    transition: 0.5s ease-in-out;
+    z-index: 1000;
 }
 
 .side-nav .profile-pic{
@@ -91,3 +93,43 @@
 }
 
 /* end main-box coding */
+
+.visible-question i {
+    font-size: 22px;
+}
+
+.visible-question span{
+    font-size: 22px;
+}
+
+/* start toggler coding */
+.toggler-box{
+    opacity: 0;
+}
+
+.toggler-box .toggler-icon{
+    position: fixed;
+    padding: 15px;
+    right: 0px;
+    top: 0px;
+    z-index: 100;
+    background-color: black;
+    color: #fff;
+    border-radius: 10px;
+}
+
+/* end toggler coding */
+
+@media(max-width : 991px){
+    .side-nav{
+        transform: translateX(-255px);
+    }
+
+    .side-nav.active{
+        transform: translateX(0px);
+    }
+
+    .toggler-box{
+        opacity: 1;
+    }
+}

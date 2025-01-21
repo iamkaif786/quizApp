@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../dashboard/css/dashboard.css">
     <link rel="stylesheet" href="../common/css/bootstrap.min.css">
     <link rel="stylesheet" href="../common/css/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- end css link -->
 
     <!-- start js link -->
@@ -19,6 +21,10 @@
 </head>
 
 <body>
+    <div class="toggler-box">
+        <i class="fa-solid fa-bars toggler-icon"></i>        
+        <i class="fa-solid fa-xmark d-none toggler-icon"></i>
+    </div>
     <div class="side-nav">
         <div class="profile-pic"></div>
         <ul class="list-group">
@@ -42,8 +48,8 @@
     </div>
     <div class="container-fluid overflow-hidden p-2 main-box">
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-10 mt-1 p-0">
+            <div class="col-md-0 col-lg-2"></div>
+            <div class="col-md-12 col-lg-10 mt-1 p-0">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <h1 id="brand-name"></h1>
@@ -101,16 +107,19 @@
                         <div class="accordion">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#create-subject">
+                                    <button class="accordion-button" data-bs-toggle="collapse"
+                                        data-bs-target="#create-subject">
                                         Create Subject
                                     </button>
                                 </h2>
                                 <div class="accordion-collapse collapse" id="create-subject">
                                     <div class="accordion-body">
                                         <form>
-                                            <input type="text" class="form-control subject mb-3" placeholder="Subject Name">
+                                            <input type="text" class="form-control subject mb-3"
+                                                placeholder="Subject Name">
                                             <div align="end">
-                                                <button class="btn text-white subject-btn" style="background-color: #263159;">Store Subject</button>
+                                                <button class="btn text-white subject-btn"
+                                                    style="background-color: #263159;">Store Subject</button>
                                             </div>
                                         </form>
                                     </div>
@@ -129,7 +138,8 @@
                         <div class="accordion">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#create-question">
+                                    <button class="accordion-button" data-bs-toggle="collapse"
+                                        data-bs-target="#create-question">
                                         Create Question
                                     </button>
                                 </h2>
@@ -140,24 +150,31 @@
                                                 <option value="choose subject">Choose Subject:</option>
                                             </select>
                                             <label for="question">1 Enter Your Question Here</label>
-                                            <input type="text" required class="form-control subject mb-3" id="question" name="option-one" placeholder="Enter your question">
+                                            <input type="text" required class="form-control subject mb-3" id="question"
+                                                name="option-one" placeholder="Enter your question">
 
                                             <label for="option-one">Option-1</label>
-                                            <input type="text" required class="form-control subject mb-3" id="option-one" name="option-one" placeholder="Option 1">
+                                            <input type="text" required class="form-control subject mb-3"
+                                                id="option-one" name="option-one" placeholder="Option 1">
 
                                             <label for="option-two">Option-2</label>
-                                            <input type="text" required class="form-control subject mb-3" id="option-two" name="option-two" placeholder="Option 2">
+                                            <input type="text" required class="form-control subject mb-3"
+                                                id="option-two" name="option-two" placeholder="Option 2">
 
                                             <label for="option-three">Option-3</label>
-                                            <input type="text" required class="form-control subject mb-3" id="option-three" name="option-three" placeholder="Option 3">
+                                            <input type="text" required class="form-control subject mb-3"
+                                                id="option-three" name="option-three" placeholder="Option 3">
 
                                             <label for="option-four">Option-4</label>
-                                            <input type="text" required class="form-control subject mb-3" id="option-four" name="option-four" placeholder="Option 4">
+                                            <input type="text" required class="form-control subject mb-3"
+                                                id="option-four" name="option-four" placeholder="Option 4">
 
                                             <label for="correct-answer">Correct Answer</label>
-                                            <input type="text" required class="form-control subject mb-3" id="correct-answer" name="correct-answer" placeholder="Correct Answer">
+                                            <input type="text" required class="form-control subject mb-3"
+                                                id="correct-answer" name="correct-answer" placeholder="Correct Answer">
                                             <div align="end">
-                                                <button class="btn text-white" style="background-color: #263159;">Store Questions</button>
+                                                <button class="btn text-white" style="background-color: #263159;">Store
+                                                    Questions</button>
                                             </div>
                                         </form>
                                     </div>
@@ -178,7 +195,8 @@
                         <div class="accordion">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#show-subject">
+                                    <button class="accordion-button" data-bs-toggle="collapse"
+                                        data-bs-target="#show-subject">
                                         Update and Delete All Subject
                                     </button>
                                 </h2>
@@ -210,15 +228,21 @@
                         <div class="accordion">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#show-question">
+                                    <button class="accordion-button" data-bs-toggle="collapse"
+                                        data-bs-target="#show-question">
                                         Update & Delete Question
                                     </button>
                                 </h2>
-                                <div class="accordion-collapse collapse" id="show-question">
+                                <div class="accordion-collapse collapse show" id="show-question">
                                     <div class="accordion-body">
                                         <select name="" id="select-subject" class="form-select mb-3">
                                             <option value="choose subject">Choose Subject</option>
                                         </select>
+                                        <!-- Today Coding -->
+                                        <div class="visible-question">
+                                            
+                                        </div>
+                                        <!-- Today Coding end -->
                                     </div>
                                 </div>
                             </div>
