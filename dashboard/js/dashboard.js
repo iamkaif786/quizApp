@@ -349,6 +349,9 @@ var allRegInput = registrationForm.querySelectorAll('INPUT');
 var userType = registrationForm.querySelector('select');
 var address = registrationForm.querySelector('textarea');
 var registrationDataEl = document.querySelector('.registration-data');
+var profileBox = document.querySelector('.upload-box');
+var uploadInput = document.querySelector('.upload-input');
+var modalImgUrl;
 var registrationData = [];
 
 registrationForm.onsubmit = function (e) {
@@ -451,13 +454,12 @@ const getRegistrationDataFunc = () => {
     }
     // start update coding
     var allEditBtn = registrationDataEl.querySelectorAll('.edit-btn');
-    var profileBox = document.querySelector('.upload-box');
-    var uploadInput = document.querySelector('.upload-input');
     var modalForm = document.querySelector('.modal-form');
     var modalEditBtn = document.querySelector('.modal-edit');
     var modalUpdateBtn = document.querySelector('.modal-update-btn');
     var allModalInput = modalForm.querySelectorAll('input');
     var modalTextarea = modalForm.querySelector('textarea');
+    var closeBtn = document.querySelector('.btn-close');
     for (i = 0; i < allEditBtn.length; i++) {
         allEditBtn[i].onclick = function () {
             var parent = this.parentElement.parentElement;
@@ -495,11 +497,66 @@ const getRegistrationDataFunc = () => {
                 uploadInput.disabled = false;
                 this.classList.add('d-none');
                 modalUpdateBtn.classList.remove('d-none');
+
+                modalUpdateBtn.onclick = function () {
+                    var name = allModalInput[0].value;
+                    var fatherName = allModalInput[1].value;
+                    var dob = allModalInput[2].value;
+                    var userType = allModalInput[3].value;
+                    var mobile = allModalInput[4].value;
+                    var enrollment = allModalInput[5].value;
+                    var password = allModalInput[6].value;
+                    var address = modalTextarea.value;
+
+
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once updated, you will not be able to recover this imaginary file!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                        .then((willUpdated) => {
+                            if (willUpdated) {
+                                registrationData[index] = {
+                                    name: name,
+                                    fatherName: fatherName,
+                                    dob: dob,
+                                    userType: userType,
+                                    mobile: mobile,
+                                    enrollment: enrollment,
+                                    password: password,
+                                    address: address,
+                                    profilePic: modalImgUrl == undefined ? imgUrl : modalImgUrl
+                                }
+                                localStorage.setItem(brandCode + '_registrationData', JSON.stringify(registrationData));
+                                getRegistrationDataFunc();
+                                this.classList.add('d-none');
+                                modalEditBtn.classList.remove('d-none');
+                                closeBtn.click();
+                                swal("Poof! Your data has been updated!", {
+                                    icon: "success",
+                                });
+                            } else {
+                                swal("Your imaginary file is safe!");
+                            }
+                        });
+                }
             }
         }
     }
 }
 getRegistrationDataFunc();
+
+// read photo coding
+uploadInput.onchange = function () {
+    var fReader = new FileReader();
+    fReader.onload = function (e) {
+        modalImgUrl = e.target.result;
+        profileBox.style.backgroundImage = `url(${modalImgUrl})`;
+    }
+    fReader.readAsDataURL(uploadInput.files[0]);
+}
 
 // start toggler coding
 var togglersBtn = document.querySelectorAll('.toggler-icon');
