@@ -372,7 +372,8 @@ const registrationFunc = () => {
             mobile: allRegInput[3].value,
             enrollment: allRegInput[4].value,
             password: allRegInput[5].value,
-            address: address.value
+            address: address.value,
+            profilePic: '/images/profile-dp.webp'
         });
         localStorage.setItem(brandCode + '_registrationData', JSON.stringify(registrationData));
         swal("Data Inserted !", "Registration done successfully !", "success");
@@ -393,7 +394,7 @@ const getRegistrationDataFunc = () => {
             <th scope="row">${index + 1}</th>
             <td>
                 <div class="profile">
-                    <img src="/images/profile-dp.webp" width="40" height="40"
+                    <img src="${allData.profilePic}" width="40" height="40"
                         alt="">
                 </div>
             </td>
@@ -421,7 +422,7 @@ const getRegistrationDataFunc = () => {
 
     // start delete button coding
     var allDelBtn = registrationDataEl.querySelectorAll('.del-btn');
-    var i;
+    var i, j;
     for (i = 0; i < allDelBtn.length; i++) {
         allDelBtn[i].onclick = function () {
             var parent = this.parentElement.parentElement;
@@ -446,6 +447,55 @@ const getRegistrationDataFunc = () => {
                         swal("Your imaginary file is safe!");
                     }
                 });
+        }
+    }
+    // start update coding
+    var allEditBtn = registrationDataEl.querySelectorAll('.edit-btn');
+    var profileBox = document.querySelector('.upload-box');
+    var uploadInput = document.querySelector('.upload-input');
+    var modalForm = document.querySelector('.modal-form');
+    var modalEditBtn = document.querySelector('.modal-edit');
+    var modalUpdateBtn = document.querySelector('.modal-update-btn');
+    var allModalInput = modalForm.querySelectorAll('input');
+    var modalTextarea = modalForm.querySelector('textarea');
+    for (i = 0; i < allEditBtn.length; i++) {
+        allEditBtn[i].onclick = function () {
+            var parent = this.parentElement.parentElement;
+            var index = parent.getAttribute('index');
+            var td = parent.querySelectorAll('td');
+            var imgUrl = td[0].querySelector('img').src;
+            var name = td[1].innerHTML;
+            var fatherName = td[2].innerHTML;
+            var dob = td[3].innerHTML;
+            var userType = td[4].innerHTML;
+            var mobile = td[5].innerHTML;
+            var enrollment = td[6].innerHTML;
+            var password = td[7].innerHTML;
+            var address = td[8].innerHTML;
+            profileBox.style.backgroundImage = `url(${imgUrl})`;
+            allModalInput[0].value = name;
+            allModalInput[1].value = fatherName;
+            allModalInput[2].value = dob;
+            allModalInput[3].value = userType;
+            allModalInput[4].value = mobile;
+            allModalInput[5].value = enrollment;
+            allModalInput[6].value = password;
+            modalTextarea.value = address;
+
+            for (j = 0; j < allModalInput.length; j++) {
+                allModalInput[j].disabled = true;
+            }
+            modalTextarea.disabled = true;
+            uploadInput.disabled = true;
+            modalEditBtn.onclick = function () {
+                for (j = 0; j < allModalInput.length; j++) {
+                    allModalInput[j].disabled = false;
+                }
+                modalTextarea.disabled = false;
+                uploadInput.disabled = false;
+                this.classList.add('d-none');
+                modalUpdateBtn.classList.remove('d-none');
+            }
         }
     }
 }

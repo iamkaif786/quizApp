@@ -179,6 +179,10 @@
     font-weight: bold;
 }
 
+i{
+    cursor: pointer;
+}
+
 /* end modal coding */
 
 .visible-question i {

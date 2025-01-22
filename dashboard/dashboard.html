@@ -366,7 +366,7 @@
 
     <!-- start modal coding -->
 
-    <div class="modal user-profile-box" id="myModal">
+    <div class="modal user-profile-box animate__animated animate__fadeInDown " id="myModal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -379,7 +379,7 @@
                             <div class="profile-box mb-3">
                                 <div class="upload-box">
                                     <button class="btn"><i class="fa fa-add"></i> </button>
-                                    <input type="file" placeholder=".">
+                                    <input type="file" class="upload-input" placeholder=".">
                                 </div>
                                 <br>
                                 <h3>Saif Shaikh</h3>
@@ -397,7 +397,7 @@
                             </div>
                         </div>
                         <div class="col-8">
-                            <form>
+                            <form class="modal-form">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Name</span>
                                     <input type="text" class="form-control">
@@ -443,7 +443,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn modal-edit">Edit</button>
-                    <button class="btn fw-bold text-white d-none btn-info">Update</button>
+                    <button class="btn fw-bold text-white modal-update-btn d-none btn-info">Update</button>
                 </div>
             </div>
         </div>
