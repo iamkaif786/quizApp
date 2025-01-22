@@ -6,7 +6,7 @@ if (brandCode == null) {
     document.body.style.background = "black";
     swal("Unauthorised User !", "Do not waste your time !", "warning");
 }
-var allUserData = JSON.parse(localStorage.getItem(brandCode));
+var allUserData = JSON.parse(localStorage.getItem(brandCode + '_brand'));
 var brandNameEl = document.getElementById('brand-name');
 console.log(allUserData);
 brandNameEl.innerHTML = "Welcome : " + allUserData.brandName;
@@ -106,7 +106,7 @@ const newSubject = (subject, index) => {
     }
 }
 
-if (localStorage.getItem(brandCode + '_allSubject') != null) {
+if (localStorage.getItem(brandCode+ '_allSubject') != null) {
     allSubject = JSON.parse(localStorage.getItem(brandCode + '_allSubject'));
     allSubject.forEach((subject, index) => {
         newSubject(subject, index);
@@ -529,7 +529,7 @@ const getRegistrationDataFunc = () => {
                                     address: address,
                                     profilePic: modalImgUrl == undefined ? imgUrl : modalImgUrl
                                 }
-                                localStorage.setItem(brandCode + '_registrationData', JSON.stringify(registrationData));
+                                localStorage.setItem(brandCode+ '_registrationData', JSON.stringify(registrationData));
                                 getRegistrationDataFunc();
                                 this.classList.add('d-none');
                                 modalEditBtn.classList.remove('d-none');

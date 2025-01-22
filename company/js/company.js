@@ -31,7 +31,7 @@ registerForm.onsubmit = function (e) {
 }
 
 const registrationData = () => {
-    if (localStorage.getItem(allInput[0].value) == null) {
+    if (localStorage.getItem(allInput[0].value+'_brand') == null) {
         const userData = {
             brandCode: allInput[0].value,
             brandName: allInput[1].value,
@@ -42,7 +42,7 @@ const registrationData = () => {
             password: allInput[5].value
         }
         let userString = JSON.stringify(userData);
-        localStorage.setItem(allInput[0].value, userString);
+        localStorage.setItem(allInput[0].value+'_brand', userString);
         registerForm.reset('');
         swal("Registration Successful!", "Please Sign In!", "success");
     } else {
@@ -59,8 +59,8 @@ var password = document.querySelector('#password');
 signinBtn.onclick = function (e) {
     e.preventDefault();
     if(brandCode.value && username.value && password.value !== ""){
-        if(localStorage.getItem(brandCode.value) !== null){
-            var allData = JSON.parse(localStorage.getItem(brandCode.value));
+        if(localStorage.getItem(brandCode.value+'_brand') !== null){
+            var allData = JSON.parse(localStorage.getItem(brandCode.value+'_brand'));
             console.log(allData);
             if(allData.username == username.value){
                 if(allData.password == password.value){
