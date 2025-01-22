@@ -343,6 +343,114 @@ const newQuestionFunc = () => {
     }
 }
 
+// start registration coding
+var registrationForm = document.querySelector('.registration-form');
+var allRegInput = registrationForm.querySelectorAll('INPUT');
+var userType = registrationForm.querySelector('select');
+var address = registrationForm.querySelector('textarea');
+var registrationDataEl = document.querySelector('.registration-data');
+var registrationData = [];
+
+registrationForm.onsubmit = function (e) {
+    e.preventDefault();
+    registrationFunc();
+    getRegistrationDataFunc();
+}
+
+// get data
+if (localStorage.getItem(brandCode + '_registrationData') != null) {
+    registrationData = JSON.parse(localStorage.getItem(brandCode + '_registrationData'));
+}
+
+const registrationFunc = () => {
+    if (userType.value != 'choose type') {
+        registrationData.push({
+            name: allRegInput[0].value,
+            fatherName: allRegInput[1].value,
+            dob: allRegInput[2].value,
+            userType: userType.value,
+            mobile: allRegInput[3].value,
+            enrollment: allRegInput[4].value,
+            password: allRegInput[5].value,
+            address: address.value
+        });
+        localStorage.setItem(brandCode + '_registrationData', JSON.stringify(registrationData));
+        swal("Data Inserted !", "Registration done successfully !", "success");
+        registrationForm.reset('');
+    } else {
+        swal("Choose Type !", "Please Select a User Type !", "warning");
+    }
+}
+
+// get registration data
+
+const getRegistrationDataFunc = () => {
+    registrationDataEl.innerHTML = '';
+    registrationData.forEach((allData, index) => {
+        registrationDataEl.innerHTML += `
+        
+        <tr index="${index}">
+            <th scope="row">${index + 1}</th>
+            <td>
+                <div class="profile">
+                    <img src="/images/profile-dp.webp" width="40" height="40"
+                        alt="">
+                </div>
+            </td>
+            <td class="text-nowrap" style="width: 8rem;">${allData.name}</td>
+            <td class="text-nowrap" style="width: 8rem;">${allData.fatherName}
+            </td>
+            <td class="text-nowrap" style="width: 8rem;">${allData.dob}</td>
+            <td class="text-nowrap" style="width: 8rem;">
+                ${allData.userType}</td>
+            <td class="text-nowrap" style="width: 8rem;">${allData.mobile}</td>
+            <td class="text-nowrap" style="width: 8rem;">${allData.enrollment}
+            </td>
+            <td class="text-nowrap" style="width: 8rem;">${allData.password}
+            </td>
+            <td class="text-nowrap" style="width: 8rem;">${allData.address}</td>
+            <td class="text-nowrap" style="width: 8rem;">
+                <i class="fa fa-trash del-btn mx-3"></i>
+                <i class="fa fa-eye edit-btn" data-bs-toggle="modal"
+                    data-bs-target="#myModal"></i>
+            </td>
+        </tr>
+        
+        `;
+    });
+
+    // start delete button coding
+    var allDelBtn = registrationDataEl.querySelectorAll('.del-btn');
+    var i;
+    for (i = 0; i < allDelBtn.length; i++) {
+        allDelBtn[i].onclick = function () {
+            var parent = this.parentElement.parentElement;
+            var index = parent.getAttribute('index');
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        registrationData.splice(index, 1);
+                        localStorage.setItem(brandCode + '_registrationData', JSON.stringify(registrationData));
+                        parent.remove();
+                        getRegistrationDataFunc();
+                        swal("Poof! Your imaginary file has been deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+        }
+    }
+}
+getRegistrationDataFunc();
+
 // start toggler coding
 var togglersBtn = document.querySelectorAll('.toggler-icon');
 var sideNav = document.querySelector('.side-nav');
