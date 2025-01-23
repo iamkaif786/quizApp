@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: slateblue !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main{
+    background-color: #fff !important;
+    padding: 20px;
+}
+
+.main label{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.main .next-btn{
+    box-shadow: none;
+    cursor: pointer;
+}

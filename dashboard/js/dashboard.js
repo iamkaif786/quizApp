@@ -224,7 +224,7 @@ var visibleQuestion = document.querySelector('.visible-question');
 selectSubject.onchange = () => {
     if (localStorage.getItem(brandCode + '_' + selectSubject.value + '_question') != null) {
         newQuestions = JSON.parse(localStorage.getItem(brandCode + '_' + selectSubject.value + '_question'));
-        visibleQuestion.innerHTML = '';
+        visibleQuestion.innerHTML ='';
         newQuestionFunc();
     } else {
         visibleQuestion.innerHTML = "<b style='color:red'>No Data Available !</b>";
@@ -246,15 +246,15 @@ const newQuestionFunc = () => {
             </div>
             <br>
             <div>
-                <span>1) ${question.optionOne}</span>
+                <span>1)${question.optionOne}</span>
                 <br><br>
-                <span>2) ${question.optionTwo}</span>
+                <span>2)${question.optionTwo}</span>
                 <br><br>
-                <span>3) ${question.optionThree}</span>
+                <span>3)${question.optionThree}</span>
                 <br><br>
-                <span>4) ${question.optionFour}</span>
+                <span>4)${question.optionFour}</span>
                 <br><br>
-                <span class="bg-info text-white p-3"> ${question.correctAnswer}</span>
+                <span class="bg-info text-white p-3">${question.correctAnswer}</span>
                 <br><br>
             </div>
         </div>

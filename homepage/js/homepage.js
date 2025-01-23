@@ -46,17 +46,31 @@ const loginUserFun = () => {
     if (localStorage.getItem(brandCode + '_registrationData') != null) {
         allUserData = JSON.parse(localStorage.getItem(brandCode + '_registrationData'));
     }
-    loginForm.onsubmit = function(e) {
+    console.log(allUserData);
+    loginForm.onsubmit = function (e) {
         e.preventDefault();
-        for(i = 0; i < allUserData.length; i++) {
+        for(i=0; i<allUserData.length; i++){
             if(allUserData[i].enrollment == allLoginInput[0].value){
                 if(allUserData[i].password == allLoginInput[1].value){
-                    alert('Success');
+                    if(allUserData[i].userType == "teacher"){
+                        sessionStorage.setItem('brandCode', brandCode);
+                        window.location = '../dashboard/dashboard.html';
+                        return;
+                    }else{
+                        sessionStorage.setItem('enrollment', allUserData[i].enrollment);
+                        sessionStorage.setItem('name', allUserData[i].name);
+                        sessionStorage.setItem('address', allUserData[i].address);
+                        sessionStorage.setItem('fatherName', allUserData[i].fatherName);
+                        sessionStorage.setItem('brandCode', brandCode);
+                        window.location = '../welcome/welcome.html';
+                        return;
+                    }
                     return;
                 }else{
-                    swal("Wrong Password !", "Please Enter Correct Password !", "warning"); 
-                    return;   
+                    swal("Wrong Password !", "Please contact your Teacher !", "warning");
+                    return;
                 }
+                return;
             }else{
                 swal("Wrong Enrollment !", "Please contact your Teacher !", "warning");
             }
