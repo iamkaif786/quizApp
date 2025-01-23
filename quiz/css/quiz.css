@@ -20,6 +20,7 @@ body{
 .main label{
     font-size: 18px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .main .next-btn{

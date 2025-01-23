@@ -106,7 +106,7 @@ const newSubject = (subject, index) => {
     }
 }
 
-if (localStorage.getItem(brandCode+ '_allSubject') != null) {
+if (localStorage.getItem(brandCode + '_allSubject') != null) {
     allSubject = JSON.parse(localStorage.getItem(brandCode + '_allSubject'));
     allSubject.forEach((subject, index) => {
         newSubject(subject, index);
@@ -139,6 +139,7 @@ var chooseSubject = document.querySelector('#choose-subject');
 var questionForm = document.querySelector('.question-form');
 var allQuesInput = questionForm.querySelectorAll('INPUT');
 var selectSubject = document.querySelector('#select-subject');
+var subjectResultEl = document.querySelector('#subject-result-el');
 var allQuestion = [];
 var subject;
 questionForm.onsubmit = (e) => {
@@ -153,6 +154,10 @@ const chooseSubjectFunc = () => {
         `;
 
         selectSubject.innerHTML += `        
+        <option value="${subject.subjectName}">${subject.subjectName}</option>
+        `;
+
+        subjectResultEl.innerHTML += `        
         <option value="${subject.subjectName}">${subject.subjectName}</option>
         `;
     })
@@ -224,7 +229,7 @@ var visibleQuestion = document.querySelector('.visible-question');
 selectSubject.onchange = () => {
     if (localStorage.getItem(brandCode + '_' + selectSubject.value + '_question') != null) {
         newQuestions = JSON.parse(localStorage.getItem(brandCode + '_' + selectSubject.value + '_question'));
-        visibleQuestion.innerHTML ='';
+        visibleQuestion.innerHTML = '';
         newQuestionFunc();
     } else {
         visibleQuestion.innerHTML = "<b style='color:red'>No Data Available !</b>";
@@ -529,7 +534,7 @@ const getRegistrationDataFunc = () => {
                                     address: address,
                                     profilePic: modalImgUrl == undefined ? imgUrl : modalImgUrl
                                 }
-                                localStorage.setItem(brandCode+ '_registrationData', JSON.stringify(registrationData));
+                                localStorage.setItem(brandCode + '_registrationData', JSON.stringify(registrationData));
                                 getRegistrationDataFunc();
                                 this.classList.add('d-none');
                                 modalEditBtn.classList.remove('d-none');
@@ -572,3 +577,36 @@ togglersBtn[1].onclick = function () {
     this.classList.add('d-none');
     togglersBtn[0].classList.remove('d-none');
 }
+
+// start get result coding from datbase
+let allResult = [];
+var allUserResultBox = document.querySelector('.subject-result-data');
+subjectResultEl.addEventListener('change', () => {
+    allUserResultBox.innerHTML = '';
+    if (subjectResultEl.value != 'choose subject') {
+        if (localStorage.getItem(brandCode + '_' + subjectResultEl.value + '_result') != null) {
+            allResult = JSON.parse(localStorage.getItem(brandCode + '_' + subjectResultEl.value + '_result'));
+            allResult.forEach((data, index) => {
+                allUserResultBox.innerHTML += `
+                
+                <tr>
+                    <td class="text-nowrap" style="width: 8rem;">${index + 1}</td>
+                    <td class="text-nowrap" style="width: 8rem;">${data.name}</td>
+                    <td class="text-nowrap" style="width: 8rem;">${data.enrollment}</td>
+                    <td class="text-nowrap" style="width: 8rem;">${data.subject}</td>
+                    <td class="text-nowrap" style="width: 8rem;">${data.rightAns}</td>
+                    <td class="text-nowrap" style="width: 8rem;">${data.wrongAns}</td>
+                    <td class="text-nowrap" style="width: 8rem;">${data.maxMarks}</td>
+                </tr>
+
+                `;
+            });
+        }
+    } else {
+        swal({
+            title: "Select Subject",
+            text: "Please select subject first !",
+            icon: "warning"
+        });
+    }
+})

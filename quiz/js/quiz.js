@@ -16,6 +16,7 @@ var total = allQuestion.length;
 var right = 0;
 var wrong = 0;
 var allUserResult = [];
+var particularUserResult = [];
 
 let mainBox = document.querySelector('.main');
 var allOptionsEl = document.querySelectorAll('.option');
@@ -76,12 +77,17 @@ const endQuiz = () => {
 }
 
 const submitFunc = () => {
-    if(localStorage.getItem(brandCode + '_' + subject + '_result')!= null) {
+    if (localStorage.getItem(brandCode + '_' + subject + '_result') != null) {
         allUserResult = JSON.parse(localStorage.getItem(brandCode + '_' + subject + '_result'));
+    }
+
+    if (localStorage.getItem(brandCode + '_' + enrollment + '_result') != null) {
+        particularUserResult = JSON.parse(localStorage.getItem(brandCode + '_' + enrollment + '_result'));
     }
     var submitBtn = document.querySelector('.quiz-submit-btn');
     submitBtn.onclick = function () {
         allUserResultFunc();
+        particularUserResultFunc();
         this.innerHTML = 'Please Wait...!';
         this.disabled = true;
     }
@@ -97,6 +103,28 @@ const allUserResultFunc = () => {
         maxMarks: total
     });
     localStorage.setItem(brandCode + '_' + subject + '_result', JSON.stringify(allUserResult));
+    setTimeout(function () {
+        sessionStorage.removeItem('name');
+        sessionStorage.removeItem('address');
+        sessionStorage.removeItem('enrollment');
+        sessionStorage.removeItem('fatherName');
+        sessionStorage.removeItem('brandCode');
+        sessionStorage.removeItem('subject');
+        window.location = '../homepage/homepage.html';
+    }, 2000);
+}
+
+const particularUserResultFunc = () => {
+    particularUserResult.push({
+        name: studentName,
+        fatherName: fatherName,
+        enrollment: enrollment,
+        subject: subject,
+        rightAns: right,
+        wrongAns: wrong,
+        maxMarks: total
+    });
+    localStorage.setItem(brandCode + '_' + enrollment + '_result', JSON.stringify(particularUserResult));
     setTimeout(function () {
         sessionStorage.removeItem('name');
         sessionStorage.removeItem('address');
