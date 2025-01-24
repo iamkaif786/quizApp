@@ -4,6 +4,7 @@ var studentName = sessionStorage.getItem('name');
 var address = sessionStorage.getItem('address');
 var fatherName = sessionStorage.getItem('fatherName');
 var enrollment = sessionStorage.getItem('enrollment');
+var imgUrl = sessionStorage.getItem('imgUrl');
 var allQuestion = [];
 // reading question from localstorage
 if (localStorage.getItem(brandCode + '_' + subject + '_question') != null) {
@@ -122,7 +123,8 @@ const particularUserResultFunc = () => {
         subject: subject,
         rightAns: right,
         wrongAns: wrong,
-        maxMarks: total
+        maxMarks: total,
+        profilePic: imgUrl
     });
     localStorage.setItem(brandCode + '_' + enrollment + '_result', JSON.stringify(particularUserResult));
     setTimeout(function () {

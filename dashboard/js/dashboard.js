@@ -616,6 +616,14 @@ let closeBtn = document.querySelector('.certificate-close-btn');
 let certificateMainBox = document.querySelector('.certificate-main');
 let certificateForm = document.querySelector('.certificate-form');
 var cirInput = certificateForm.querySelector('input');
+let cirBrandName = certificateMainBox.querySelector('.brand-name');
+let cirAddress = certificateMainBox.querySelector('.brand-address');
+let cirName = certificateMainBox.querySelector('.cir-name');
+let cirEnrollment = certificateMainBox.querySelector('.cir-enrollment');
+let cirFather = certificateMainBox.querySelector('.cir-father');
+let cirData = certificateMainBox.querySelector('.cir-data');
+let cirTotal = certificateMainBox.querySelectorAll('.cir-total');
+let cirProfile = certificateMainBox.querySelector('.cir-profile');
 // getting result from db
 certificateForm.onsubmit = function (e) {
     e.preventDefault();
@@ -624,9 +632,37 @@ certificateForm.onsubmit = function (e) {
 
 const getUserResult = () => {
     if(cirInput.value != ''){
+        cirData.innerHTML = '';
         if(localStorage.getItem(brandCode + '_' + cirInput.value + '_result') != null){
             var resultData = JSON.parse(localStorage.getItem(brandCode + '_' + cirInput.value + '_result'));
             certificateMainBox.classList.add('active');
+            cirBrandName.innerHTML = allUserData.brandName;
+            cirAddress.innerHTML = allUserData.address;
+            cirName.innerHTML = resultData[0].name;
+            cirEnrollment.innerHTML = resultData[0].enrollment;
+            cirFather.innerHTML = resultData[0].fatherName;
+            cirProfile.src = resultData[0].profilePic;
+            let maxMarks = 0;
+            let mark = 0;
+            let total = 0;
+            resultData.forEach((data, index) => {
+                cirData.innerHTML += `                
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${data.subject}</td>
+                    <td>${data.maxMarks}</td>
+                    <td>${data.rightAns}</td>
+                    <td>${data.rightAns}</td>
+                </tr>
+                `;
+                maxMarks += data.maxMarks;
+                mark += data.rightAns;
+                total += data.rightAns;
+            });
+            cirTotal[0].innerHTML = maxMarks;
+            cirTotal[1].innerHTML = mark;
+            cirTotal[2].innerHTML = total;
+            console.log(resultData);
         }else{
             swal({
                 title: "No Result Found",

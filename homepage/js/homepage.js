@@ -62,6 +62,7 @@ const loginUserFun = () => {
                         sessionStorage.setItem('address', allUserData[i].address);
                         sessionStorage.setItem('fatherName', allUserData[i].fatherName);
                         sessionStorage.setItem('brandCode', brandCode);
+                        sessionStorage.setItem('imgUrl', allUserData[i].profilePic);
                         window.location = '../welcome/welcome.html';
                         return;
                     }
