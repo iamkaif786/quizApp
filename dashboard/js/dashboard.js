@@ -609,4 +609,41 @@ subjectResultEl.addEventListener('change', () => {
             icon: "warning"
         });
     }
-})
+});
+
+// start get certificate coding
+let closeBtn = document.querySelector('.certificate-close-btn');
+let certificateMainBox = document.querySelector('.certificate-main');
+let certificateForm = document.querySelector('.certificate-form');
+var cirInput = certificateForm.querySelector('input');
+// getting result from db
+certificateForm.onsubmit = function (e) {
+    e.preventDefault();
+    getUserResult();
+}
+
+const getUserResult = () => {
+    if(cirInput.value != ''){
+        if(localStorage.getItem(brandCode + '_' + cirInput.value + '_result') != null){
+            var resultData = JSON.parse(localStorage.getItem(brandCode + '_' + cirInput.value + '_result'));
+            certificateMainBox.classList.add('active');
+        }else{
+            swal({
+                title: "No Result Found",
+                text: "There is no result found against this Enrollment !",
+                icon: "warning"
+            });
+        }
+    }else{
+        swal({
+            title: "Input field is empty",
+            text: "Please Enter Enrollment No. first !",
+            icon: "warning"
+        });
+    }
+}
+
+// closing modal coding
+closeBtn.onclick = function () {
+    certificateMainBox.classList.remove('active');
+}
