@@ -2,6 +2,7 @@
 var selectSubjectEl = document.querySelector('#select-subject-el');
 var startQuizBtn = document.querySelector('.start-quiz-btn');
 var brandCode = (sessionStorage.getItem('brandCode'));
+var enrollment = sessionStorage.getItem('enrollment');
 var allSubject = [];
 // reading subject from localstorage
 
@@ -15,6 +16,20 @@ if (localStorage.getItem(brandCode + '_allSubject') != null) {
         `;
     })
 }
+selectSubjectEl.addEventListener('change', () =>{
+    var allCookie = [];
+    var cookie = document.cookie.split(';');
+    cookie.forEach((data) => {
+        allCookie.push(data.trim());
+    })
+    if(allCookie.indexOf(brandCode + '_' + selectSubjectEl.value + '_' + enrollment+'=done')!= -1){
+        swal('Already Attempted !', 'Please contact your teacher !', 'warning');
+        startQuizBtn.disabled = true;
+    }else{
+        startQuizBtn.disabled = false;
+    }
+    console.log(allCookie);
+})
 
 startQuizBtn.onclick = function () {
     if(selectSubjectEl.value != 'choose subject'){

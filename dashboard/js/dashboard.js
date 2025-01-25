@@ -169,14 +169,10 @@ chooseSubject.addEventListener('change', () => {
     checkSubjectKey();
 });
 
-var firstOption = chooseSubject.querySelectorAll("OPTION")[1];
+// var firstOption = chooseSubject.querySelectorAll("OPTION")[1];
 
 function checkSubject() {
-    if (chooseSubject.value == "choose subject") {
-        subject = firstOption.value;
-    } else {
-        subject = chooseSubject.value;
-    }
+    subject = chooseSubject.value;
 }
 checkSubject();
 
@@ -361,13 +357,39 @@ var registrationData = [];
 
 registrationForm.onsubmit = function (e) {
     e.preventDefault();
-    registrationFunc();
-    getRegistrationDataFunc();
+    var checkData = checkEnrollment();
+    if (checkData == 'Find') {
+        swal({
+            title: "Enrollment No Already Taken !",
+            text: "Please Change Enrollment No. !",
+            icon: "warning"
+        })
+    } else {
+        registrationFunc();
+        getRegistrationDataFunc();
+    }
 }
+
+
 
 // get data
 if (localStorage.getItem(brandCode + '_registrationData') != null) {
     registrationData = JSON.parse(localStorage.getItem(brandCode + '_registrationData'));
+}
+
+// prevent to duplicate enrollment
+function checkEnrollment() {
+    var i;
+    var checkData = '';
+    for (i = 0; i < registrationData.length; i++) {
+        if (registrationData[i].enrollment == allRegInput[4].value) {
+            checkData = 'Find';
+            break;
+        } else {
+            checkData = 'Not Found';
+        }
+    }
+    return checkData;
 }
 
 const registrationFunc = () => {
@@ -481,13 +503,16 @@ const getRegistrationDataFunc = () => {
             var address = td[8].innerHTML;
             profileBox.style.backgroundImage = `url(${imgUrl})`;
             allModalInput[0].value = name;
-            allModalInput[1].value = fatherName;
+            allModalInput[1].value = fatherName.trim();
             allModalInput[2].value = dob;
-            allModalInput[3].value = userType;
+            allModalInput[3].value = userType.trim();
             allModalInput[4].value = mobile;
-            allModalInput[5].value = enrollment;
-            allModalInput[6].value = password;
+            allModalInput[5].value = enrollment.trim();
+            allModalInput[6].value = password.trim();
             modalTextarea.value = address;
+
+            // Update the dynamic name display
+            document.querySelector('h3.dName').textContent = name;
 
             for (j = 0; j < allModalInput.length; j++) {
                 allModalInput[j].disabled = true;
@@ -624,6 +649,7 @@ let cirFather = certificateMainBox.querySelector('.cir-father');
 let cirData = certificateMainBox.querySelector('.cir-data');
 let cirTotal = certificateMainBox.querySelectorAll('.cir-total');
 let cirProfile = certificateMainBox.querySelector('.cir-profile');
+let finalResultBox = certificateMainBox.querySelector('.final-result-box');
 // getting result from db
 certificateForm.onsubmit = function (e) {
     e.preventDefault();
@@ -631,9 +657,9 @@ certificateForm.onsubmit = function (e) {
 }
 
 const getUserResult = () => {
-    if(cirInput.value != ''){
+    if (cirInput.value != '') {
         cirData.innerHTML = '';
-        if(localStorage.getItem(brandCode + '_' + cirInput.value + '_result') != null){
+        if (localStorage.getItem(brandCode + '_' + cirInput.value + '_result') != null) {
             var resultData = JSON.parse(localStorage.getItem(brandCode + '_' + cirInput.value + '_result'));
             certificateMainBox.classList.add('active');
             cirBrandName.innerHTML = allUserData.brandName;
@@ -662,15 +688,21 @@ const getUserResult = () => {
             cirTotal[0].innerHTML = maxMarks;
             cirTotal[1].innerHTML = mark;
             cirTotal[2].innerHTML = total;
-            console.log(resultData);
-        }else{
+
+            let finalResult = (total / maxMarks * 100).toFixed(2);
+            if (finalResult <= 32.99) {
+                finalResultBox.innerHTML = 'FAIL';
+            } else {
+                finalResultBox.innerHTML = 'PASS';
+            }
+        } else {
             swal({
                 title: "No Result Found",
                 text: "There is no result found against this Enrollment !",
                 icon: "warning"
             });
         }
-    }else{
+    } else {
         swal({
             title: "Input field is empty",
             text: "Please Enter Enrollment No. first !",

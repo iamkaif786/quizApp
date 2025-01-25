@@ -1,15 +1,21 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Verdana;
 }
 
-.side-nav{
+.side-nav {
     position: fixed;
     top: 0;
     left: 0;
-    width: 220px;
+    /* width: 220px; */
+    width: 20%;
+    max-width: 250px;
+    min-width: 80px;
+    /* Prevent it from becoming too small */
+    height: 100vh;
+    /*  */
     height: 100vh;
     background-color: #263159;
     display: flex;
@@ -21,17 +27,30 @@
     z-index: 1000;
 }
 
-.side-nav .profile-pic{
+.side-nav.active {
+    width: 10%;
+}
+
+.side-nav .list-group-item {
+    font-size: 0.8rem;
+    /* Reduce font size */
+    text-align: center;
+    /* Center align for smaller navbar */
+    padding: 5px;
+}
+
+
+.side-nav .profile-pic {
     width: 150px;
     height: 150px;
     background-image: url('/images/profile-dp.webp');
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 50%;
-    
+
 }
 
-.side-nav ul{
+.side-nav ul {
     width: 100%;
     margin: 20px 0px 0px;
 }
@@ -45,13 +64,13 @@
     transition: 0.4s ease-in-out;
 }
 
-.side-nav ul li:hover{
+.side-nav ul li:hover {
     background-color: #fff !important;
     color: #000 !important;
     cursor: pointer;
 }
 
-.side-nav button{
+.side-nav button {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -68,13 +87,28 @@
 
 /* start main-box coding */
 
-.main-box .list-group li{
+.main-box {
+    margin-left: 20%;
+    /* Match the .side-nav width */
+    transition: margin-left 0.3s ease-in-out;
+    /* Smooth transition when sidebar collapses */
+}
+
+@media screen and (max-width: 768px) {
+    .main-box {
+        margin-left: 50px;
+        /* Adjust for mobile view */
+    }
+}
+
+
+.main-box .list-group li {
     border-radius: 0 !important;
     background-color: #263159 !important;
     color: #fff;
 }
 
-.main-box .teacher-box .content-box{
+.main-box .teacher-box .content-box {
     width: 100%;
     height: 150px;
     display: flex;
@@ -82,7 +116,7 @@
     align-items: center;
 }
 
-.main-box .teacher-box .content-box .number-box{
+.main-box .teacher-box .content-box .number-box {
     width: 120px;
     height: 120px;
     border: 5px solid #263159;
@@ -96,12 +130,12 @@
 
 /* start modal coding */
 
-.user-profile-box .modal-header{
+.user-profile-box .modal-header {
     background-color: #F161C0;
     color: #fff;
 }
 
-.user-profile-box .profile-box{
+.user-profile-box .profile-box {
     width: 100%;
     height: 300px;
     background-color: rgba(146, 146, 146, 0.295);
@@ -113,7 +147,7 @@
     position: relative;
 }
 
-.user-profile-box .profile-box .upload-box{
+.user-profile-box .profile-box .upload-box {
     width: 150px;
     height: 150px;
     background-image: url(/images/profile-dp.webp);
@@ -123,22 +157,26 @@
     border-radius: 50%;
 }
 
-.user-profile-box .profile-box button{
+input.form-control {
+    margin: auto;
+}
+
+.user-profile-box .profile-box button {
     position: absolute;
     right: 0;
     top: 0;
     font-size: 35px;
 }
 
-.user-profile-box .profile-box input{
+.user-profile-box .profile-box input {
     position: absolute;
-    right: 0;
+    /* right: 0; */
     top: 18px;
     width: 50px;
     opacity: 0;
 }
 
-.user-profile-box .date-box{
+.user-profile-box .date-box {
     width: 100%;
     height: 150px;
     background-color: rgba(146, 146, 146, 0.295);
@@ -148,7 +186,7 @@
     flex-direction: column;
 }
 
-.user-profile-box .date-box .icon-box{
+.user-profile-box .date-box .icon-box {
     width: 100%;
     height: 40px;
     background-color: #F161C0;
@@ -158,28 +196,28 @@
     color: #fff;
 }
 
-.user-profile-box .date-box .icon-box h3{
+.user-profile-box .date-box .icon-box h3 {
     font-weight: bold;
     margin-top: 5px;
 }
 
-.user-profile-box .date-box .icon-box i{
+.user-profile-box .date-box .icon-box i {
     font-size: 35px;
 }
 
-.user-profile-box .date-box h1{
+.user-profile-box .date-box h1 {
     font-weight: bold;
     font-size: 45px;
 }
 
-.user-profile-box .modal-footer .modal-edit{
+.user-profile-box .modal-footer .modal-edit {
     width: 100px;
     background-color: #F161C0;
     color: #fff;
     font-weight: bold;
 }
 
-i{
+i {
     cursor: pointer;
 }
 
@@ -189,13 +227,13 @@ i{
     font-size: 22px;
 }
 
-.visible-question span{
+.visible-question span {
     font-size: 22px;
 }
 
 /* start certificate coding */
 
-.certificate-main{
+.certificate-main {
     width: 800px;
     height: 1000px;
     /* background-color: red; */
@@ -208,14 +246,14 @@ i{
     z-index: -100;
 }
 
-.certificate-main.active{
+.certificate-main.active {
     opacity: 1;
     z-index: 100;
     animation-name: slideInDown;
     animation-duration: 1s;
 }
 
-.certificate-main .main-box{
+.certificate-main .main-box {
     width: 100%;
     height: 100%;
     /* background-color: #6D67E4; */
@@ -225,7 +263,7 @@ i{
     padding: 0px 50px;
 }
 
-.certificate-main .main-box .name-box{
+.certificate-main .main-box .name-box {
     width: 90%;
     height: 200px;
     /* border: 1px solid #ccc; */
@@ -235,7 +273,7 @@ i{
     align-items: center;
 }
 
-.certificate-main .main-box .name-box .img-box{
+.certificate-main .main-box .name-box .img-box {
     width: 30%;
     height: 90%;
     /* border: 1px solid #ccc; */
@@ -245,20 +283,20 @@ i{
     justify-content: space-between;
 }
 
-.certificate-main .main-box .name-box .img-box p{
+.certificate-main .main-box .name-box .img-box p {
     font-weight: bold;
 }
 
-.certificate-main .main-box .signature-box{
+.certificate-main .main-box .signature-box {
     width: 80%;
     height: 150px;
     border: 2px solid black;
-    margin-left: 30px;
+    margin-left: 48px;
     display: flex;
     justify-content: center;
 }
 
-.certificate-main .main-box .signature-box .sign-box{
+.certificate-main .main-box .signature-box .sign-box {
     width: 30%;
     height: 100%;
     /* border: 1px solid #ccc; */
@@ -266,13 +304,18 @@ i{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
 }
 
-.certificate-main .resultText{
+.certificate-main .resultText {
     margin-left: 45px;
 }
 
-.certificate-main .certificate-close-btn{
+.certificate-main .certificate-close-btn {
     position: absolute;
     right: -30px;
     top: -50px;
@@ -282,18 +325,18 @@ i{
     /* background-color: black; */
 }
 
-.certificate-main .certificate-close-btn:hover{
+.certificate-main .certificate-close-btn:hover {
     color: red;
 }
 
 /* end certificate coding */
 
 /* start toggler coding */
-.toggler-box{
+.toggler-box {
     opacity: 0;
 }
 
-.toggler-box .toggler-icon{
+.toggler-box .toggler-icon {
     position: fixed;
     padding: 15px;
     right: 0px;
@@ -306,16 +349,121 @@ i{
 
 /* end toggler coding */
 
-@media(max-width : 991px){
-    .side-nav{
+@media(max-width : 991px) {
+    .side-nav {
         transform: translateX(-255px);
     }
 
-    .side-nav.active{
+    .side-nav.active {
         transform: translateX(0px);
     }
 
-    .toggler-box{
+    .toggler-box {
         opacity: 1;
+    }
+}
+
+
+/* CSS for dashboard.css */
+
+@media screen and (max-width: 1366px) {
+
+    /* Sidebar responsiveness */
+    .side-nav {
+        width: 200px;
+        /* Adjust to fit smaller widths */
+    }
+
+    .side-nav.active {
+        width: 150px;
+    }
+
+    /* Main content adjustments */
+    .main-box {
+        padding: 10px;
+    }
+
+    .teacher-box {
+        margin-bottom: 10px;
+    }
+
+    .modal-dialog {
+        max-width: 90%;
+        /* Shrink modal for smaller screens */
+    }
+}
+
+@media screen and (max-width: 1024px) {
+
+    /* For tablet devices or smaller laptops */
+    .side-nav {
+        /* display: none; Hide sidebar */
+        width: 10px;
+    }
+
+    .main-box {
+        padding: 5px;
+    }
+
+    .teacher-box {
+        width: 100%;
+        /* Stack boxes */
+        margin: 0 auto;
+    }
+
+    .modal-dialog {
+        max-width: 95%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    /* For mobile devices */
+    body {
+        font-size: 14px;
+    }
+
+    .main-box {
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    .teacher-box {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .content-box {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .modal-dialog {
+        max-width: 100%;
+        margin: 10px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .list-group-item {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .side-nav {
+        width: 50px;
+        /* Collapsed width for mobile */
+    }
+
+    .side-nav .list-group-item {
+        font-size: 0.8rem;
+        /* Reduce font size */
+        text-align: center;
+        /* Center align for smaller navbar */
+        padding: 5px;
+        /* Reduce padding */
     }
 }

@@ -87,6 +87,7 @@ const submitFunc = () => {
     }
     var submitBtn = document.querySelector('.quiz-submit-btn');
     submitBtn.onclick = function () {
+        document.cookie = brandCode + '_' +subject + '_' + enrollment+ '=done; max-age=86400;path=/';
         allUserResultFunc();
         particularUserResultFunc();
         this.innerHTML = 'Please Wait...!';

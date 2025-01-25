@@ -279,7 +279,7 @@
                                                     <input type="text" required id="father" class="form-control mb-3">
                                                     <label for="dob">DOB</label>
                                                     <input type="date" required id="dob" class="form-control mb-3">
-                                                    <select name="" id="choose-type" class="form-select mb-3">
+                                                    <select id="choose-type" class="form-select mb-3">
                                                         <option value="choose type">Choose Type</option>
                                                         <option value="teacher">Teacher</option>
                                                         <option value="student">Student</option>
@@ -330,13 +330,13 @@
                                 </h2>
                                 <div class="accordion-collapse collapse" id="registration-form1">
                                     <div class="accordion-body" style="overflow-x: scroll;">
-                                        <table class="table">
+                                        <table class="table-responsive-sm w-100">
                                             <thead>
-                                                <tr>
+                                                <tr class="text-nowrap">
                                                     <th>#</th>
                                                     <th>Profile</th>
                                                     <th>Name</th>
-                                                    <th style="width: 350px;">Father's Name</th>
+                                                    <th>Father's Name</th>
                                                     <th>DOB</th>
                                                     <th>User Type</th>
                                                     <th>Mobile</th>
@@ -406,7 +406,7 @@
                                         Search Subject Result
                                     </button>
                                 </h2>
-                                <div class="accordion-collapse collapse show" id="subject-result">
+                                <div class="accordion-collapse collapse" id="subject-result">
                                     <div class="accordion-body">
                                         <select name="choose subject" id="subject-result-el" class="form-select mb-3">
                                             <option value="choose subject">Choose Subject:</option>
@@ -453,19 +453,19 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3>Saif Shaikh</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">.</button>
+                    
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-4">
                             <div class="profile-box mb-3">
                                 <div class="upload-box">
-                                    <button class="btn"><i class="fa fa-add"></i>.</button>
-                                    <input type="file" class="upload-input" placeholder=".">
+                                    <button class="btn"><i class="fa fa-add"></i></button>
+                                    <input type="file" class="upload-input" placeholder="">
                                 </div>
                                 <br>
-                                <h3>Saif Shaikh</h3>
+                                <h3 class="dName">Saif Shaikh</h3>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                             </div>
                             <div class="date-box">
@@ -480,45 +480,45 @@
                             </div>
                         </div>
                         <div class="col-8">
-                            <form class="modal-form">
+                            <form class="modal-form text-nowrap">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Name</span>
-                                    <input type="text" class="form-control" placeholder="Name">
+                                    <input type="text" class="form-control">
                                 </div>
 
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Father's Name</span>
-                                    <input type="text" class="form-control" placeholder="Father's Name">
+                                    <span class="input-group-text" >Father's Name</span>
+                                    <input type="text" class="form-control">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">DOB</span>
-                                    <input type="text" class="form-control" placeholder="DOB">
+                                    <input type="text" class="form-control">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">User Type</span>
-                                    <input type="text" class="form-control" placeholder="User Type">
+                                    <input type="text" class="form-control">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Mobile</span>
-                                    <input type="text" class="form-control" placeholder="Mobile">
+                                    <input type="text" class="form-control">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Enrollment</span>
-                                    <input type="text" class="form-control" placeholder="Enrollment">
+                                    <input type="text" class="form-control">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Password</span>
-                                    <input type="text" class="form-control" placeholder="Password">
+                                    <input type="text" class="form-control">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Address</span>
-                                    <textarea name="" id="" class="form-control"></textarea>
+                                    <textarea class="form-control"></textarea>
                                 </div>
                             </form>
                         </div>
@@ -593,7 +593,7 @@
             <div class="signature-box">
                 <div class="sign-box" style="border-right: 2px solid black;">
                 </div>
-                <div class="sign-box">
+                <div class="sign-box final-result-box">
                 </div>
                 <div class="sign-box" style="border-left: 2px solid black;">
                 </div>
