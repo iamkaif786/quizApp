@@ -7,23 +7,24 @@
     <!-- start css link -->
     <link rel="stylesheet" href="css/company.css">
     <link rel="stylesheet" href="../common/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../common/css/animate.min.css">    
+    <link rel="stylesheet" href="../common/css/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- end css link -->
 
     <!-- start js link -->
     <script src="../common/js/bootstrap.bundle.min.js"></script>
-    <script src="../common/js/sweetalert.min.js"></script>    
+    <script src="../common/js/sweetalert.min.js"></script>
     <!-- end js link -->
     <title>Company</title>
 </head>
 
 <body>
-    <div class="container bg-white main-box">
+    <div class="container mt-5 bg-white main-box">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
                 <a href="#" class="navbar-brand">Brand Logo</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar">
-                    <span class="navbar-toggler-icon"></span>.
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collpase navbar-collapse" id="myNavbar">
                     <div class="navbar-nav w-100 justify-content-end">
@@ -33,36 +34,39 @@
                         <a href="#" class="nav-link">Contact</a>
                         <a href="#" class="nav-link btn signup-btn bg-info">Sign Up</a>
                         <a href="#" class="nav-link d-none btn login-btn bg-info">Sign In</a>
-                    </div>
+                    </div>                
                 </div>
             </div>
         </nav>
         <div class="row">
             <div class="col-md-6">
                 <div class="login-box active">
+                    <h2 style="font-size: 16px;" class="mb-3"><i class="fa-solid fa-user-shield" style="font-size: 16px;"></i> Login</h2>
                     <form class="login-form">
-                        <label for="brand-code">Brand Code</label>
+                        <label for="brand-code">Brand Code / College Code</label>
                         <input type="text" required id="brand-code" name="brand-code" class="form-control mb-3"
                             placeholder="Enter Brand Code">
 
                         <label for="username">Username</label>
+                        <i class="fa-solid fa-user"></i>
                         <input type="text" required id="username" name="username" class="form-control mb-3"
                             placeholder="Enter Username">
 
                         <label for="password">Password</label>
+                        <i class="fa-solid fa-lock"></i>
                         <input type="password" required id="password" name="password" class="form-control mb-3"
                             placeholder="Enter Password">
 
                         <div align="end">
                             <a href="#">Student Login Form</a>
                         </div>
-                        <button class="btn signin-btn btn-danger mt-3 mb-3 w-100">Sign In</button>
+                        <button class="btn signin-btn btn-danger mt-3 mb-3 w-100"><i class="fa-solid fa-sign-in-alt" style="margin-right: 10px;"></i>Sign In</button>
                     </form>
                 </div>
 
                 <div class="signup-box">
                     <form class="signup-form">
-                        <label for="s-brand-code">Brand Code</label>
+                        <label for="s-brand-code">Brand Code / College Code</label>
                         <input type="text" required name="s-brand-code" id="s-brand-code" class="form-control mb-3"
                             placeholder="Enter Brand Code">
 
@@ -102,6 +106,31 @@
         </div>
     </div>
 
+    <!-- Footer Section -->
+    <footer class="mt-5">
+        <div class="footer-content">
+            <p>© 2025 Created by Mohammadkaif Shaikh. All rights reserved.</p>
+            <div class="social-media">
+                <a href="https://www.facebook.com/iamkaif786" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/iamkaif313_official" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.x.com/iamkaif313" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/iamkaif313/" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>               
+                <a href="https://www.github.com/iamkaif786" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-github"></i>
+                </a>                
+            </div>
+        </div>
+    </footer>
+    <!-- https://www.facebook.com/iamkaif786 -->
+    <!-- End Footer Section -->
     <script src="js/company.js"></script>
 </body>
 
