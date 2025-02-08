@@ -5,6 +5,45 @@
     font-family: Verdana;
 }
 
+body {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url('/images/arrowhead-rounded-outline.png'), auto;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Sidebar responsiveness */
+.sidebar {
+    width: 20%;
+    min-width: 200px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px;
+    height: 100vh;
+    overflow: auto;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar img {
+    max-width: 100%;
+    border-radius: 50%;
+}
+
 .side-nav {
     position: fixed;
     top: 0;
@@ -86,6 +125,14 @@
 /* end sidenav coding */
 
 /* start main-box coding */
+
+/* Main content area */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    min-width: 300px;
+    background-color: #ecf0f1;
+}
 
 .main-box {
     margin-left: 20%;
@@ -332,6 +379,22 @@ i {
 
 /* end certificate coding */
 
+/* Table responsiveness */
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+
 /* start toggler coding */
 .toggler-box {
     opacity: 0;
@@ -466,5 +529,36 @@ i {
         /* Center align for smaller navbar */
         padding: 5px;
         /* Reduce padding */
+    }
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 700%;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    th,
+    td {
+        font-size: 14px;
+    }
+}
+
+@media all and (max-width: 1040px) {
+    .sidebar {
+        width: 700%;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    th,
+    td {
+        font-size: 14px;
     }
 }

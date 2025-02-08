@@ -83,3 +83,16 @@ signinBtn.onclick = function (e) {
         swal("Empty Field !", "Please fill All the Fields", "warning");
     }
 }
+
+// Prevent Right-Click
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.addEventListener('keydown', function(event) {
+
+    if (event.ctrlKey && event.shiftKey && event.key === 'i') {
+
+        event.preventDefault();
+
+    }
+
+});

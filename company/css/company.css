@@ -18,6 +18,32 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: url('/images/arrowhead-rounded-outline.png'), auto;
+}
+
+/* Labels */
+label {
+    color: #1E3C72; /* Matched Label Colors */
+    font-weight: bold;
+    cursor: url('/images/arrowhead-rounded-outline.png'), auto;
+}
+
+/* Input Fields */
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Unified Rounded Corners */
+    outline: none;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+
+
+input:focus, select:focus {
+    border-color: #1E3C72;
+    box-shadow: 0 0 5px rgba(30, 60, 114, 0.5); /* Added Soft Focus Effect */
 }
 
 .main-box {
@@ -40,11 +66,14 @@ body {
 .main-box .navbar .nav-link {
     font-family: sans-serif !important;
     font-weight: bold;
+    cursor: url('/images/hand-pointer.png'), auto;
 }
 
 .main-box .navbar .btn {
     background-color: #FC91BC !important;
     color: #fff !important;
+    background: #1E3C72 !important;
+    cursor: url('/images/hand-pointer.png'), auto;
 }
 
 /* start login and signup coding */
@@ -76,6 +105,8 @@ body {
     font-size: 22px !important;
     box-shadow: none !important;
     border: none !important;
+    background: #1E3C72 !important;
+    cursor: url('/images/hand-pointer.png'), auto;
 }
 
 .main-box .login-box{

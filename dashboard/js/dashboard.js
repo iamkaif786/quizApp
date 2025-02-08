@@ -11,6 +11,8 @@ var brandNameEl = document.getElementById('brand-name');
 console.log(allUserData);
 brandNameEl.innerHTML = "Welcome : " + allUserData.brandName;
 
+
+
 // start logout coding
 var logoutBtn = document.querySelector('#logout-btn');
 logoutBtn.onclick = function () {
@@ -31,6 +33,7 @@ var allSubject = [];
 subjectBtn.onclick = function (e) {
     e.preventDefault();
     if (subjectEl.value != '') {
+        swal("Success!", "Subject Added Successfully!", "success");
         newSubject();
         subjectEl.value = "";
     } else {
@@ -715,3 +718,15 @@ const getUserResult = () => {
 closeBtn.onclick = function () {
     certificateMainBox.classList.remove('active');
 }
+
+// Prevent Right-Click
+document.addEventListener('keydown', function(event) {
+
+    if (event.ctrlKey && event.shiftKey && event.key === 'i') {
+
+        event.preventDefault();
+
+    }
+
+});
+document.addEventListener('contextmenu', event => event.preventDefault());

@@ -6,6 +6,7 @@
 
 body{
     background-color: #66BB77 !important;
+    /* pointer-events: none; */
 }
 
 .input-group-text{

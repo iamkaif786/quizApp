@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../common/css/bootstrap.min.css">
     <link rel="stylesheet" href="../common/css/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/images/quiz.png">
     <!-- end css link -->
 
     <!-- start js link -->
@@ -39,7 +40,7 @@
             </div>
         </nav>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6">                
                 <div class="login-box active">
                     <h2 style="font-size: 16px;" class="mb-3"><i class="fa-solid fa-user-shield" style="font-size: 16px;"></i> Login</h2>
                     <form class="login-form">
@@ -57,10 +58,12 @@
                         <input type="password" required id="password" name="password" class="form-control mb-3"
                             placeholder="Enter Password">
 
-                        <div align="end">
+                        <!-- <div align="end">
                             <a href="#">Student Login Form</a>
-                        </div>
+                        </div> -->
                         <button class="btn signin-btn btn-danger mt-3 mb-3 w-100"><i class="fa-solid fa-sign-in-alt" style="margin-right: 10px;"></i>Sign In</button>
+                        
+                        <button onclick="window.location.href='/index.html'" class="btn btn-primary" style="margin-bottom: 20px;">Go to Quiz</button>
                     </form>
                 </div>
 
